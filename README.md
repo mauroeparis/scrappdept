@@ -4,7 +4,7 @@
 
 Este proyecto busca inmuebles con los filtros que quieras y manda un mensaje de telegram a un grupo con los inmuebles nuevos que encuentra.
 
-Hasta el día 18/02/2012 solo están implementados los conectores de Zonaprop, Argenprop y Mercado Libre.
+Hasta el día 18/02/2021 solo están implementados los conectores de Zonaprop, Argenprop y Mercado Libre.
 
 > El de mercado libre anda medio mal pero anda y hay un intento de implementar el de Olx pero encontramos una casa antes de terminarlo bien.
 
