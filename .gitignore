@@ -1,0 +1,6 @@
+seen.txt
+offers.json
+seen_data.txt
+
+.DS_Store
+*.pyc
