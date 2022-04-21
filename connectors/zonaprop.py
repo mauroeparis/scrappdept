@@ -6,14 +6,12 @@ class ZonapropCrawler(BaseCrawler):
     name = "Zonaprop"
     url_base = "https://www.zonaprop.com.ar"
     _full_url = (
-        "https://www.zonaprop.com.ar/casas-departamentos"
-        "-alquiler-nueva-cordoba-centro-cordoba-general"
-        "-paz-cordoba-alberdi-cordoba-alto-alberdi-alta"
-        "-cordoba-cofico-general-bustos-guemes-cordoba"
-        "-jardin-jockey-club-cordoba-cordoba-observatorio"
-        "-10000-55000-pesos-orden-publicado-descendent-pagina-{}.html"
+        "https://www.zonaprop.com.ar/casas-"
+        "departamentos-alquiler-cordoba-cb-desde"
+        "-2-habitaciones-mas-de-2-ambientes-15000-25000-pesos"
+        "-orden-publicado-descendent-pagina-{}.html"
     )
-    number_of_pages = 5
+    number_of_pages = 0
 
     base_info_class = "postingCardContent"
     base_info_tag = "div"
@@ -40,7 +38,6 @@ class ZonapropCrawler(BaseCrawler):
         objects = []
         base_info_soaps = soup.find_all(
             self.base_info_tag, class_=self.base_info_class)
-        print("Lets get this MFO data!")
 
         for base_info_soap in base_info_soaps:
             try:

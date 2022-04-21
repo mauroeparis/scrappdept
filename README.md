@@ -4,7 +4,7 @@
 
 Este proyecto busca inmuebles con los filtros que quieras y manda un mensaje de telegram a un grupo con los inmuebles nuevos que encuentra.
 
-Hasta el día 18/02/2021 solo están implementados los conectores de Zonaprop, Argenprop y Mercado Libre.
+Hasta el día 18/02/2012 solo están implementados los conectores de Zonaprop, Argenprop y Mercado Libre.
 
 > El de mercado libre anda medio mal pero anda y hay un intento de implementar el de Olx pero encontramos una casa antes de terminarlo bien.
 
@@ -24,7 +24,7 @@ Sentite libre de abrir PRs, forkear, abrir issues, seguirme en twitter que tengo
 
 ### Configurar Bot de Telegram
 
-1. Para poder utilizar este proyecto tenés vas a tener que crearte un bot y agregarlo a un grupo. Nosotros vamos a utilizar el token del bot y el "Chat ID" del grupo. Si no sabes cómo conseguir esas cosas [acá te dejo un link](https://dev.to/rizkyrajitha/get-notifications-with-telegram-bot-537l). 
+1. Para poder utilizar este proyecto tenés vas a tener que crearte un bot, agregarlo a un grupo. Nosotros vamos a utilizar el token del bot y el "Chat ID" del grupo. Si no sabes cómo conseguir esas cosas [acá te dejo un link](https://dev.to/rizkyrajitha/get-notifications-with-telegram-bot-537l). 
 
 2. Una vez que tenés esas cosas, vas a clonar este repo e ir a la carpeta en donde lo pongas. Si no sabés clonar un repositorio [acá te dejo un link](https://www.taloselectronics.com/blogs/tutoriales/como-descargar-un-proyecto-de-github)
 

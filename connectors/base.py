@@ -3,9 +3,9 @@ import time
 from hashlib import sha1
 from urllib.parse import urlparse
 
-from bs4 import BeautifulSoup
 import cloudscraper
 import requests
+from bs4 import BeautifulSoup
 from requests.exceptions import InvalidSchema
 
 
@@ -21,9 +21,9 @@ class BaseCrawler:
     price_regex = None
 
     # Telegram bot token here
-    bot_token = None
+    bot_token = "1346325228:AAER2AItAePnwDod8E4wWgZ5RAguDlq67dA"
     # Chat roop ID goes here
-    chat_room = None
+    chat_room = "-1001351937287"
 
     soup = None
 

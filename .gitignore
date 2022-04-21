@@ -1,6 +1,8 @@
-seen.txt
-offers.json
-seen_data.txt
-
 .DS_Store
 *.pyc
+__pycache__/
+
+scrapdep/
+config.json
+*.db
+*.sqlite3

@@ -7,10 +7,9 @@ class MercadolibreCrawler(BaseCrawler):
     name = "Mercado Libre"
     url_base = "https://inmuebles.mercadolibre.com.ar"
     full_url = (
-        "https://inmuebles.mercadolibre.com.ar/casas/"
-        "alquiler/cordoba/cordoba/nueva-cordoba-o-"
-        "alta-cordoba-o-centro-o-general-paz-o-cofico"
-        "/_DisplayType_LF_PriceRange_10000ARS-55000ARS"
+        "https://inmuebles.mercadolibre.com.ar/alquiler"
+        "/2-ambientes/cordoba/cordoba/"
+        "_PriceRange_15000ARS-25000ARS_Cocheras_1"
     )
 
     base_info_class = "ui-search-layout__item"
@@ -34,7 +33,6 @@ class MercadolibreCrawler(BaseCrawler):
         objects = []
         base_info_soaps = soup.find_all(
             self.base_info_tag, class_=self.base_info_class)
-        print("Lets get this MFO data!")
 
         for base_info_soap in base_info_soaps:
             try:

@@ -8,8 +8,8 @@ class ArgenpropCrawler(BaseCrawler):
     url_base = "https://www.argenprop.com"
     _full_url = (
         "https://www.argenprop.com/departamento-y-casa"
-        "-alquiler-barrio-centro-cor-barrio-guemes-"
-        "cor-barrio-jardin-barrio-nueva-cordoba-10000-55000-pesos"
+        "-alquiler-localidad-cordoba-cc-"
+        "-2-dormitorios-15000-25000-pesos"
         "-orden-masnuevos-pagina-{}"
     )
     number_of_pages = 5
@@ -39,7 +39,6 @@ class ArgenpropCrawler(BaseCrawler):
         objects = []
         base_info_soaps = soup.find_all(
             self.base_info_tag, class_=self.base_info_class)
-        print("Lets get this MFO data!")
 
         for base_info_soap in base_info_soaps:
             try:
