@@ -1,4 +1,5 @@
 import json
+from time import sleep
 from typing import Optional
 
 import typer
@@ -19,6 +20,7 @@ class Config(BaseModel):
     pages: int
     bot_token: str
     chat_room: str
+    persist: Optional[bool] = False
     zonaprop_base_url: Optional[str] = None
     zonaprop_full_url: Optional[str] = None
     argenprop_full_url: Optional[str] = None
@@ -43,56 +45,62 @@ def main(config_path: str):
     create_db_and_tables()
     console.log('Database loaded', style='italic bold green')
 
-    # SCRAP POSTINGS
-    zonaprop_scraper_service = ScraperServiceFactory.build_for_zonaprop(
-        pages=config.pages,
-        full_url=config.zonaprop_full_url,
-    )
-    zonaprop_posting_service = PostingService(
-        scraper_service=zonaprop_scraper_service
-    )
-    zonaprop_posting_service.scrap_and_create_postings()
+    while(True):
+        # SCRAP POSTINGS
+        zonaprop_scraper_service = ScraperServiceFactory.build_for_zonaprop(
+            pages=config.pages,
+            full_url=config.zonaprop_full_url,
+        )
+        zonaprop_posting_service = PostingService(
+            scraper_service=zonaprop_scraper_service
+        )
+        zonaprop_posting_service.scrap_and_create_postings()
 
-    argenprop_scraper_service = ScraperServiceFactory.build_for_argenprop(
-        pages=config.pages,
-        full_url=config.argenprop_full_url,
-    )
-    argenprop_posting_service = PostingService(
-        scraper_service=argenprop_scraper_service
-    )
-    argenprop_posting_service.scrap_and_create_postings()
+        argenprop_scraper_service = ScraperServiceFactory.build_for_argenprop(
+            pages=config.pages,
+            full_url=config.argenprop_full_url,
+        )
+        argenprop_posting_service = PostingService(
+            scraper_service=argenprop_scraper_service
+        )
+        argenprop_posting_service.scrap_and_create_postings()
 
-    mercadolibre_scraper_service = ScraperServiceFactory.build_for_mercadolibre(
-        pages=config.pages,
-        full_url=config.mercadolibre_full_url,
-    )
-    mercadolibre_posting_service = PostingService(
-        scraper_service=mercadolibre_scraper_service
-    )
-    mercadolibre_posting_service.scrap_and_create_postings()
-    console.log('Postings scrapped', style='italic bold green')
+        mercadolibre_scraper_service = ScraperServiceFactory.build_for_mercadolibre(
+            pages=config.pages,
+            full_url=config.mercadolibre_full_url,
+        )
+        mercadolibre_posting_service = PostingService(
+            scraper_service=mercadolibre_scraper_service
+        )
+        mercadolibre_posting_service.scrap_and_create_postings()
+        console.log('Postings scrapped', style='italic bold green')
 
-    # SEND POSTINGS
-    posting_repository = PostingRepository()
-    unsent_postings = posting_repository.get_unsent_postings()
+        # SEND POSTINGS
+        posting_repository = PostingRepository()
+        unsent_postings = posting_repository.get_unsent_postings()
 
-    # telegram_service = TelegramService(
-    #     bot_token=config.bot_token,
-    #     chat_room=config.chat_room,
-    # )
-    # console.log(f'About to send [u]{len(unsent_postings)}[/u] postings')
-    # for posting in track(unsent_postings, description='Sending postings...'):
-    #     msg_text = telegram_service.format_posting_to_message(posting)
-    #     sent = telegram_service.send_telegram_message(msg_text)
-    #     if sent:
-    #         posting_repository.set_posting_as_sent(posting.sha)
-    #         console.log(f'{posting.title} has been sent!', style='green')
-    #     else:
-    #         console.log(
-    #             f'[bold u]ERROR[/bold u]: Unable to send {posting.title}',
-    #             style='red'
-    #         )
-    console.log('Postings sent', style='italic bold green')
+        # telegram_service = TelegramService(
+        #     bot_token=config.bot_token,
+        #     chat_room=config.chat_room,
+        # )
+        # console.log(f'About to send [u]{len(unsent_postings)}[/u] postings')
+        # for posting in track(unsent_postings, description='Sending postings...'):
+        #     msg_text = telegram_service.format_posting_to_message(posting)
+        #     sent = telegram_service.send_telegram_message(msg_text)
+        #     if sent:
+        #         posting_repository.set_posting_as_sent(posting.sha)
+        #         console.log(f'{posting.title} has been sent!', style='green')
+        #     else:
+        #         console.log(
+        #             f'[bold u]ERROR[/bold u]: Unable to send {posting.title}',
+        #             style='red'
+        #         )
+        console.log('Postings sent', style='italic bold green')
+
+        if not config.persist:
+            break
+        
+        sleep(5)
 
 
 if __name__ == '__main__':
