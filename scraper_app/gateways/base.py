@@ -17,8 +17,8 @@ class BaseGateway(ABC):
         html = ''
         scraper = cloudscraper.create_scraper()
         console.log(
-            'On my way to [bold cyan]GET[/bold cyan] [u]{}[/u]\n{}'.format(
-                self._name, self._full_url.format(1)
+            'On my way to [bold cyan]GET[/bold cyan] [u]{}[/u]'.format(
+                self._name
             )
         )
 

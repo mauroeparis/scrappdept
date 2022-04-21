@@ -16,6 +16,7 @@ console = Console()
 
 
 class Config(BaseModel):
+    pages: int
     bot_token: str
     chat_room: str
     zonaprop_base_url: Optional[str] = None
@@ -34,12 +35,15 @@ def main(config_path: str):
             '[bold u]ERROR[/bold u]: Config error.\n', ex, style='red'
         )
         return
+    console.log('Configuration read correctly', style='italic bold green')
     
     # LOAD DATABASE
     create_db_and_tables()
+    console.log('Database loaded', style='italic bold green')
 
     # SCRAP POSTINGS
     zonaprop_scraper_service = ScraperServiceFactory.build_for_zonaprop(
+        pages=config.pages,
         base_url=config.zonaprop_base_url,
         full_url=config.zonaprop_full_url,
     )
@@ -47,27 +51,29 @@ def main(config_path: str):
         scraper_service=zonaprop_scraper_service
     )
     posting_service.scrap_and_create_postings()
+    console.log('Postings scrapped', style='italic bold green')
 
     # SEND POSTINGS
     posting_repository = PostingRepository()
     unsent_postings = posting_repository.get_unsent_postings()
 
-    telegram_service = TelegramService(
-        bot_token=config.bot_token,
-        chat_room=config.chat_room,
-    )
-    console.log(f"About to send [u]{len(unsent_postings)}[/u] postings")
-    for posting in track(unsent_postings, description="Sending postings..."):
-        msg_text = telegram_service.format_posting_to_message(posting)
-        sent = telegram_service.send_telegram_message(msg_text)
-        if sent:
-            posting_repository.set_posting_as_sent(posting.sha)
-            console.log(f'{posting.title} has been sent!', style='green')
-        else:
-            console.log(
-                f'[bold u]ERROR[/bold u]: Unable to send {posting.title}',
-                style='red'
-            )
+    # telegram_service = TelegramService(
+    #     bot_token=config.bot_token,
+    #     chat_room=config.chat_room,
+    # )
+    # console.log(f'About to send [u]{len(unsent_postings)}[/u] postings')
+    # for posting in track(unsent_postings, description='Sending postings...'):
+    #     msg_text = telegram_service.format_posting_to_message(posting)
+    #     sent = telegram_service.send_telegram_message(msg_text)
+    #     if sent:
+    #         posting_repository.set_posting_as_sent(posting.sha)
+    #         console.log(f'{posting.title} has been sent!', style='green')
+    #     else:
+    #         console.log(
+    #             f'[bold u]ERROR[/bold u]: Unable to send {posting.title}',
+    #             style='red'
+    #         )
+    console.log('Postings sent', style='italic bold green')
 
 
 if __name__ == '__main__':

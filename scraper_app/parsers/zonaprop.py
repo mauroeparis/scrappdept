@@ -1,3 +1,5 @@
+from typing import Set
+
 from bs4 import BeautifulSoup
 
 from .base import BaseParser
@@ -5,16 +7,16 @@ from posting_app.database import Posting, PostingRepository
 
 
 class ZonapropParser(BaseParser):
-    base_info_class = "postingCardContent"
-    base_info_tag = "div"
-    link_regex = "a.go-to-posting"
-    price_regex = "span.firstPrice"
-    description_regex = "div.postingCardDescription"
-    location_regex = "span.postingCardLocation"
+    base_info_class = 'postingCardContent'
+    base_info_tag = 'div'
+    link_regex = 'a.go-to-posting'
+    price_regex = 'span.firstPrice'
+    description_regex = 'div.postingCardDescription'
+    location_regex = 'span.postingCardLocation'
 
-    def extract_data(self):
-        """Extracting data and returning list of postings"""
-        postings = []
+    def extract_data(self) -> Set[Posting]:
+        '''Extracting data and returning list of postings'''
+        postings = set()
         base_info_soaps = self.soup.find_all(
             self.base_info_tag, class_=self.base_info_class)
 
@@ -27,16 +29,16 @@ class ZonapropParser(BaseParser):
                 location_container = base_info_soap.select(
                     self.location_regex)[0]
             except Exception as e:
-                print("ERROR: the regex didnt work")
+                print('ERROR: the regex didnt work')
                 continue
 
-            href = "{}{}".format(
+            href = '{}{}'.format(
                 self._base_url,
-                link_container["href"],
+                link_container['href'],
             )
             title = self.sanitize_text(link_container.text)
             sha = self.get_id(href)
-            price = price_container["data-price"]
+            price = price_container['data-price']
             description = self.sanitize_text(description_container.text)
             location = self.sanitize_text(location_container.text)
 
@@ -52,9 +54,9 @@ class ZonapropParser(BaseParser):
                 description=description,
                 location=location,
             )
-            postings.append(new_posting)
+            postings.add(new_posting)
 
-        return  postings
+        return postings
 
     def sanitize_text(self, text):
         '''
