@@ -5,8 +5,6 @@ from bs4 import BeautifulSoup
 from .base import BaseParser
 from posting_app.database import Posting, PostingRepository
 
-from rich.console import Console
-console = Console()
 
 class ArgenpropParser(BaseParser):
     base_info_class = 'postingCardContent'
