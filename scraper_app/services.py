@@ -51,12 +51,11 @@ class ScraperServiceFactory:
     def build_for_zonaprop(
         cls,
         pages: int,
-        base_url: str,
         full_url: str
     ) -> ScraperService:
         return ScraperService(
             pages=pages,
             url=full_url,
             gateway=ZonapropGateway(),
-            parser=ZonapropParser(base_url=base_url),
+            parser=ZonapropParser(),
         )

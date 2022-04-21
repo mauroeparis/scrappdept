@@ -44,7 +44,6 @@ def main(config_path: str):
     # SCRAP POSTINGS
     zonaprop_scraper_service = ScraperServiceFactory.build_for_zonaprop(
         pages=config.pages,
-        base_url=config.zonaprop_base_url,
         full_url=config.zonaprop_full_url,
     )
     posting_service = PostingService(

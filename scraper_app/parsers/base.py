@@ -9,9 +9,6 @@ from posting_app.database import Posting
 
 class BaseParser(ABC):
 
-    def __init__(self, base_url: str):
-        self._base_url = base_url
-
     def get_soup_object(self, html: str):
         '''
         Taking HTML code as an entry, returns
