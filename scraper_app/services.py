@@ -6,11 +6,13 @@ from .gateways import (
     BaseGateway,
     ZonapropGateway,
     ArgenpropGateway,
+    MercadolibreGateway,
 )
 from .parsers import (
     BaseParser,
     ZonapropParser,
     ArgenpropParser,
+    MercadolibreParser,
 )
 from posting_app.database import Posting
 
@@ -73,4 +75,17 @@ class ScraperServiceFactory:
             url=full_url,
             gateway=ArgenpropGateway(),
             parser=ArgenpropParser(),
+        )
+
+    @classmethod
+    def build_for_mercadolibre(
+        cls,
+        pages: int,
+        full_url: str
+    ) -> ScraperService:
+        return ScraperService(
+            pages=pages,
+            url=full_url,
+            gateway=MercadolibreGateway(),
+            parser=MercadolibreParser(),
         )

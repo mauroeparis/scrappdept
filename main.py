@@ -22,6 +22,7 @@ class Config(BaseModel):
     zonaprop_base_url: Optional[str] = None
     zonaprop_full_url: Optional[str] = None
     argenprop_full_url: Optional[str] = None
+    mercadolibre_full_url: Optional[str] = None
 
 
 def main(config_path: str):
@@ -60,6 +61,15 @@ def main(config_path: str):
         scraper_service=argenprop_scraper_service
     )
     argenprop_posting_service.scrap_and_create_postings()
+
+    mercadolibre_scraper_service = ScraperServiceFactory.build_for_mercadolibre(
+        pages=config.pages,
+        full_url=config.mercadolibre_full_url,
+    )
+    mercadolibre_posting_service = PostingService(
+        scraper_service=mercadolibre_scraper_service
+    )
+    mercadolibre_posting_service.scrap_and_create_postings()
     console.log('Postings scrapped', style='italic bold green')
 
     # SEND POSTINGS
