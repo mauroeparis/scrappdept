@@ -20,6 +20,13 @@ class BaseParser(ABC):
         '''Get a SHA1 hash to identify each object.'''
         _id = sha1(text.lower().encode('utf-8')).hexdigest()
         return _id
+    
+    def sanitize_text(self, text):
+        '''
+        Sometimes the message comes out weirdly from the html
+        this fixes it for you.
+        '''
+        return ' '.join(text.split())
 
     def extract_data(self) -> Set[Posting]:
         pass

@@ -58,10 +58,3 @@ class ZonapropParser(BaseParser):
             postings.add(new_posting)
 
         return postings
-
-    def sanitize_text(self, text):
-        '''
-        Sometimes the message comes out weirdly from the html
-        this fixes it for you.
-        '''
-        return ' '.join(text.split())

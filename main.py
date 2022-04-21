@@ -21,6 +21,7 @@ class Config(BaseModel):
     chat_room: str
     zonaprop_base_url: Optional[str] = None
     zonaprop_full_url: Optional[str] = None
+    argenprop_full_url: Optional[str] = None
 
 
 def main(config_path: str):
@@ -46,10 +47,19 @@ def main(config_path: str):
         pages=config.pages,
         full_url=config.zonaprop_full_url,
     )
-    posting_service = PostingService(
+    zonaprop_posting_service = PostingService(
         scraper_service=zonaprop_scraper_service
     )
-    posting_service.scrap_and_create_postings()
+    zonaprop_posting_service.scrap_and_create_postings()
+
+    argenprop_scraper_service = ScraperServiceFactory.build_for_argenprop(
+        pages=config.pages,
+        full_url=config.argenprop_full_url,
+    )
+    argenprop_posting_service = PostingService(
+        scraper_service=argenprop_scraper_service
+    )
+    argenprop_posting_service.scrap_and_create_postings()
     console.log('Postings scrapped', style='italic bold green')
 
     # SEND POSTINGS

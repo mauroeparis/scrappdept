@@ -4,11 +4,13 @@ from rich.console import Console
 
 from .gateways import (
     BaseGateway,
-    ZonapropGateway
+    ZonapropGateway,
+    ArgenpropGateway,
 )
 from .parsers import (
     BaseParser,
     ZonapropParser,
+    ArgenpropParser,
 )
 from posting_app.database import Posting
 
@@ -58,4 +60,17 @@ class ScraperServiceFactory:
             url=full_url,
             gateway=ZonapropGateway(),
             parser=ZonapropParser(),
+        )
+
+    @classmethod
+    def build_for_argenprop(
+        cls,
+        pages: int,
+        full_url: str
+    ) -> ScraperService:
+        return ScraperService(
+            pages=pages,
+            url=full_url,
+            gateway=ArgenpropGateway(),
+            parser=ArgenpropParser(),
         )
