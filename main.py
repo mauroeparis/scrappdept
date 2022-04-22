@@ -79,22 +79,22 @@ def main(config_path: str):
         posting_repository = PostingRepository()
         unsent_postings = posting_repository.get_unsent_postings()
 
-        # telegram_service = TelegramService(
-        #     bot_token=config.bot_token,
-        #     chat_room=config.chat_room,
-        # )
-        # console.log(f'About to send [u]{len(unsent_postings)}[/u] postings')
-        # for posting in track(unsent_postings, description='Sending postings...'):
-        #     msg_text = telegram_service.format_posting_to_message(posting)
-        #     sent = telegram_service.send_telegram_message(msg_text)
-        #     if sent:
-        #         posting_repository.set_posting_as_sent(posting.sha)
-        #         console.log(f'{posting.title} has been sent!', style='green')
-        #     else:
-        #         console.log(
-        #             f'[bold u]ERROR[/bold u]: Unable to send {posting.title}',
-        #             style='red'
-        #         )
+        telegram_service = TelegramService(
+            bot_token=config.bot_token,
+            chat_room=config.chat_room,
+        )
+        console.log(f'About to send [u]{len(unsent_postings)}[/u] postings')
+        for posting in track(unsent_postings, description='Sending postings...'):
+            msg_text = telegram_service.format_posting_to_message(posting)
+            sent = telegram_service.send_telegram_message(msg_text)
+            if sent:
+                posting_repository.set_posting_as_sent(posting.sha)
+                console.log(f'{posting.title} has been sent!', style='green')
+            else:
+                console.log(
+                    f'[bold u]ERROR[/bold u]: Unable to send {posting.title}',
+                    style='red'
+                )
         console.log('Postings sent', style='italic bold green')
 
         if not config.persist:
