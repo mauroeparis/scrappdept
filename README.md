@@ -2,7 +2,15 @@
 
 > Me quiero mudar
 
-Este proyecto busca inmuebles con los filtros que quieras y manda un bonito mensaje de telegram a un grupo con los inmuebles nuevos que encuentra.
+Este proyecto busca inmuebles en algunas páginas con los filtros que quieras y manda un bonito mensaje de telegram a un grupo con los inmuebles nuevos que encuentra en esas páginas.
+
+### Páginas Habilitadas
+
+- [Zonaprop](https://www.zonaprop.com.ar/)
+- [Argenprop](https://www.argenprop.com/)
+- [Mercadolibre](https://www.mercadolibre.com.ar)
+- [Clasificados La Voz](https://clasificados.lavoz.com.ar/inmuebles)
+- [Properati](https://www.properati.com.ar/)
 
 ## Instalación
 
@@ -47,9 +55,9 @@ pip install -r requirements.txt
 
 Es necesario decirle al script los filtros que vos pones cuando buscas inmuebles y lo vamos a hacer pasandole el link generado por las páginas cuando agregas los filtros a la búsqueda.
 
-1. Buscá en Zonaprop y/o Argenprop con los filtros que queres y andá a la segunda página de la búsqueda. (Zona, si es casa o depto, dormitorios, lo que quieras)
+1. Buscá en las páginas habilitadas que desees con los filtros que queres y andá a la segunda página de la búsqueda. (Zona, si es casa o depto, dormitorios, lo que quieras)
 
-2. Copiá el link que te sale cuando haces esa busqueda, pegalo en algún lado y fijate que al final puede decir algo cómo `-pagina-2.html` borrá el número de página y pone `{}`. El link se debería terminar con algo así `-pagina-{}.html`.
+2. Copiá el link que te sale cuando haces esa busqueda, pegalo en algún lado y fijate que al final puede decir algo cómo `-pagina-2.html` borrá el número de página y pone `{}`. El link se debería terminar con algo así `-pagina-{}.html`, `-pagina-{}` o `&page={}` (no está implementada la paginación para mercadolibre así que no es necesario hacer esto último).
 
 3. No pierdas estas cosas, las vamos a necesitar en el futuro.
 
@@ -64,6 +72,7 @@ bot_token: "1346325228:asdasdsadasdasdsaddgZ5RAguDlq67dA" # Token de bot
 chat_room: "-1801651256762" # id de chat
 pages: 5 # Cantidad de páginas que ver
 zonaprop_full_url: "https://www.zonaprop.com.ar/loquesea-pagina-{}.html" # busqueda zonaprop
+mercadolibre_full_url: "https://inmuebles.mercadolibre.com.ar/departamentos/alquiler/loquesea" # busqueda mercadolibre
 argenprop_full_url: "https://www.argenprop.com/loquesea-pagina-{}" # busqueda argenprop
 la_voz_full_url: "https://clasificados.lavoz.com.ar/inmuebles/loquesea&page={}" # busqueda la voz
 properati_full_url: "https://www.properati.com.ar/s/departamento/alquiler/loquesea&page={}" # busqueda properati
