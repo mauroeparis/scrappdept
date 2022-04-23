@@ -70,7 +70,7 @@ persist: true # En `true` hace que el script no pare
 sleep_time: 3 # Hace que el script se ejecute cada 3 segundos
 bot_token: "1346325228:asdasdsadasdasdsaddgZ5RAguDlq67dA" # Token de bot
 chat_room: "-1801651256762" # id de chat
-pages: 5 # Cantidad de páginas que ver
+pages: 5 # Cantidad de páginas que ver por link
 zonaprop_full_url: "https://www.zonaprop.com.ar/loquesea-pagina-{}.html" # busqueda zonaprop
 mercadolibre_full_url: "https://inmuebles.mercadolibre.com.ar/departamentos/alquiler/loquesea" # busqueda mercadolibre
 argenprop_full_url: "https://www.argenprop.com/loquesea-pagina-{}" # busqueda argenprop
