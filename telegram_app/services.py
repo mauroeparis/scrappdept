@@ -14,12 +14,14 @@ class TelegramService:
 
     def format_posting_to_message(self, posting: Posting) -> str:
         '''Formats the object into a Telegram message.'''
-        msg = '<b>{}</b>\n<i>{}</i> - <i>{}</i>\n\n{}\n\n{}'.format(
+        msg = '<a href="{}"><b>{}</b></a>\n{}<i>{}</i>\n{}<i>{}</i>\n\n{}'.format(
+            posting.url,
             posting.title,
+            u'\U0001F4B0',
             posting.price,
+            u'\U0001F4CD',
             posting.location,
             posting.description,
-            posting.url,
         )
 
         return msg
