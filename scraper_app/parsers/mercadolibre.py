@@ -38,7 +38,7 @@ class MercadolibreParser(BaseParser):
                 import ipdb;ipdb.set_trace()
                 continue
             else:
-                href = link_container["href"]
+                href = link_container["href"].split('#')[0]
                 sha = self.get_id(href.split("#")[0])
                 price = self.sanitize_text(price_container.text)
                 title = self.sanitize_text(title_container.text)
