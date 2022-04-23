@@ -13,7 +13,7 @@ class ZonapropParser(BaseParser):
     price_regex = 'span.firstPrice'
     description_regex = 'div.postingCardDescription'
     location_regex = 'span.postingCardLocation'
-    _base_url = 'https://www.zonaprop.com.ar/'
+    _base_url = 'https://www.zonaprop.com.ar'
 
     def extract_data(self) -> Set[Posting]:
         '''Extracting data and returning list of postings'''
