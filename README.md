@@ -49,7 +49,7 @@ Es necesario decirle al script los filtros que vos pones cuando buscas inmuebles
 
 1. Buscá en Zonaprop y/o Argenprop con los filtros que queres y andá a la segunda página de la búsqueda. (Zona, si es casa o depto, dormitorios, lo que quieras)
 
-2. Copiá el link que te sale cuando haces esa busqueda, pegalo en algún lado y fijate que al final puede decir algo cómo `-pagina-2.html` borrá el número de página y pone `{}`. El link se debería terminar viendo así `-pagina-{}.html`.
+2. Copiá el link que te sale cuando haces esa busqueda, pegalo en algún lado y fijate que al final puede decir algo cómo `-pagina-2.html` borrá el número de página y pone `{}`. El link se debería terminar con algo así `-pagina-{}.html`.
 
 3. No pierdas estas cosas, las vamos a necesitar en el futuro.
 
