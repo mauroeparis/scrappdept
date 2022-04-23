@@ -20,7 +20,7 @@ Este proyecto busca inmuebles en algunas páginas con los filtros que quieras y 
 
 2. Vas a necesitar tener instalado Python. Si no lo tenés instalado, [acá te dejo un link](https://tutorial.djangogirls.org/es/python_installation/)
 
-3. Clonar este repo. Si no sabés clonar un repositorio [acá te dejo un link](https://www.taloselectronics.com/blogs/tutoriales/como-descargar-un-proyecto-de-github)
+3. Clonar este repo. Si no sabés clonar un repositorio, [acá te dejo un link](https://www.taloselectronics.com/blogs/tutoriales/como-descargar-un-proyecto-de-github)
 
 ### Setup
 
