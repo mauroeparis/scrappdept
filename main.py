@@ -17,7 +17,7 @@ console = Console()
 
 
 class Config(BaseModel):
-    pages: int
+    pages: Optional[int] = 3
     sleep_time: Optional[int] = 5
     bot_token: str
     chat_room: str

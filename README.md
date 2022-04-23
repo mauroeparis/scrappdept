@@ -58,23 +58,24 @@ Es necesario decirle al script los filtros que vos pones cuando buscas inmuebles
 1. Creá un archivo dentro de la carpeta del repositorio que se llame `config.yaml` que se vea así:
 
 ```yaml
-persist: true
-bot_token: "1346325228:AAER2AItAePnwDod8E4wWgZ5RAguDlq67dA"
-chat_room: "-1001351937287"
-pages: 5
-zonaprop_full_url: "https://www.zonaprop.com.ar/loquesea-pagina-{}.html"
-argenprop_full_url: "https://www.argenprop.com/loquesea-pagina-{}"
+persist: true # En `true` hace que el script no pare
+sleep_time: 3 # Hace que el script se ejecute cada 3 segundos
+bot_token: "1346325228:asdasdsadasdasdsaddgZ5RAguDlq67dA" # Token de bot
+chat_room: "-1801651256762" # id de chat
+pages: 5 # Cantidad de páginas que ver
+zonaprop_full_url: "https://www.zonaprop.com.ar/loquesea-pagina-{}.html" # busqueda zonaprop
+argenprop_full_url: "https://www.argenprop.com/loquesea-pagina-{}" # busqueda argenprop
 ```
 
 Donde:
 
-- `persist`: Hace que el script se ejecute sin parar. Si es configurado en `false` va a hacer la busqueda una sola vez, en `true` busca nuevos departamentos permanentemente.
-- `sleep_time`: Tiempo que espera antes de hacer la busqueda nuevamente en segundos.
+- `persist` _(opcional, default: `false`)_: Hace que el script se ejecute sin parar. Si es configurado en `false` va a hacer la busqueda una sola vez, en `true` busca nuevos departamentos permanentemente.
+- `sleep_time` _(opcional, default: `5`)_: Tiempo que espera antes de hacer la busqueda nuevamente en segundos.
 - `bot_token`: Token del bot de telegram.
 - `chat_room`: id del chat en donde el bot envía los mensajes.
-- `pages`: Cantidad de páginas en las que querés que vea en tu búsqueda en zonaprop/argenprop.
-- `zonaprop_full_url`: URL de Zonaprop en la que buscar.
-- `argenprop_full_url`: URL de Argenprop en la que buscar.
+- `pages` _(opcional, default: `3`)_: Cantidad de páginas en las que querés que vea en tu búsqueda en zonaprop/argenprop.
+- `zonaprop_full_url` _(opcional)_: URL de Zonaprop en la que buscar.
+- `argenprop_full_url` _(opcional)_: URL de Argenprop en la que buscar.
 
 2. Profit.
 
