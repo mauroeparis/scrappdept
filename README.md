@@ -55,7 +55,7 @@ Es necesario decirle al script los filtros que vos pones cuando buscas inmuebles
 
 ### Archivo de Configuración
 
-1. Creá un archivo dentro de la carpeta del repositorio que se llame `config.yaml` que se vea así:
+1. Creá un archivo dentro de la carpeta del repositorio que se llame `config.yaml` que se vea más o menos así:
 
 ```yaml
 persist: true # En `true` hace que el script no pare
@@ -65,6 +65,7 @@ chat_room: "-1801651256762" # id de chat
 pages: 5 # Cantidad de páginas que ver
 zonaprop_full_url: "https://www.zonaprop.com.ar/loquesea-pagina-{}.html" # busqueda zonaprop
 argenprop_full_url: "https://www.argenprop.com/loquesea-pagina-{}" # busqueda argenprop
+la_voz_full_url: "https://clasificados.lavoz.com.ar/inmuebles/loquesea&page={}" # busqueda la voz
 ```
 
 Donde:

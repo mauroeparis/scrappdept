@@ -7,12 +7,14 @@ from .gateways import (
     ZonapropGateway,
     ArgenpropGateway,
     MercadolibreGateway,
+    LaVozGateway,
 )
 from .parsers import (
     BaseParser,
     ZonapropParser,
     ArgenpropParser,
     MercadolibreParser,
+    LaVozParser,
 )
 from posting_app.database import Posting
 
@@ -89,4 +91,17 @@ class ScraperServiceFactory:
             url=full_url,
             gateway=MercadolibreGateway(),
             parser=MercadolibreParser(),
+        )
+
+    @classmethod
+    def build_for_la_voz(
+        cls,
+        pages: int,
+        full_url: str
+    ) -> ScraperService:
+        return ScraperService(
+            pages=pages,
+            url=full_url,
+            gateway=LaVozGateway(),
+            parser=LaVozParser(),
         )

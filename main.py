@@ -26,6 +26,7 @@ class Config(BaseModel):
     zonaprop_full_url: Optional[str] = None
     argenprop_full_url: Optional[str] = None
     mercadolibre_full_url: Optional[str] = None
+    la_voz_full_url: Optional[str] = None
 
 
 def main(config_path: str):
@@ -77,6 +78,16 @@ def main(config_path: str):
                 scraper_service=mercadolibre_scraper_service
             )
             mercadolibre_posting_service.scrap_and_create_postings()
+
+        if config.la_voz_full_url:
+            la_voz_scraper_service = ScraperServiceFactory.build_for_la_voz(
+                pages=config.pages,
+                full_url=config.la_voz_full_url,
+            )
+            la_voz_posting_service = PostingService(
+                scraper_service=la_voz_scraper_service
+            )
+            la_voz_posting_service.scrap_and_create_postings()
 
         console.log('Postings scrapped', style='italic bold green')
 
