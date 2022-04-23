@@ -43,8 +43,6 @@ pip install -r requirements.txt
 
 2. No pierdas estas cosas, las vamos a necesitar en el futuro.
 
-> Puede que tu token y el chat id se vean distintos a los que puse ahi.
-
 ### Links de Búsqueda
 
 Es necesario decirle al script los filtros que vos pones cuando buscas inmuebles y lo vamos a hacer pasandole el link generado por las páginas cuando agregas los filtros a la búsqueda.
