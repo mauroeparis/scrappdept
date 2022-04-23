@@ -76,8 +76,7 @@ Donde:
 - `bot_token`: Token del bot de telegram.
 - `chat_room`: id del chat en donde el bot envía los mensajes.
 - `pages` _(opcional, default: `3`)_: Cantidad de páginas en las que querés que vea en tu búsqueda en zonaprop/argenprop.
-- `zonaprop_full_url` _(opcional)_: URL de Zonaprop en la que buscar.
-- `argenprop_full_url` _(opcional)_: URL de Argenprop en la que buscar.
+- `pagina_full_url` _(opcional)_: URL del link en el que buscar.
 
 2. Profit.
 
