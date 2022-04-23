@@ -3,6 +3,8 @@
 __pycache__/
 
 scrapdep/
+venv/
 config.json
+config.yaml
 *.db
 *.sqlite3

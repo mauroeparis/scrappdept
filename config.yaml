@@ -1,7 +1,0 @@
-persist: true
-bot_token: "1346325228:AAER2AItAePnwDod8E4wWgZ5RAguDlq67dA"
-chat_room: "-1001351937287"
-pages: 5
-zonaprop_full_url: "https://www.zonaprop.com.ar/casas-departamentos-alquiler-cordoba-cb-desde-2-habitaciones-mas-de-2-ambientes-15000-25000-pesos-orden-publicado-descendent-pagina-{}.html"
-argenprop_full_url: "https://www.argenprop.com/departamento-y-casa-alquiler-region-cordoba-2-dormitorios-25000-70000-pesos-pagina-{}"
-mercadolibre_full_url: "https://inmuebles.mercadolibre.com.ar/alquiler/2-ambientes/cordoba/cordoba/_PriceRange_15000ARS-25000ARS_Cocheras_1"
