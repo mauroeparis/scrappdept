@@ -8,9 +8,8 @@ from pydantic.error_wrappers import ValidationError
 from rich.console import Console
 from rich.progress import track
 
-from scraper_app.services import ScraperServiceFactory
 from posting_app.database import create_db_and_tables, PostingRepository
-from posting_app.services import PostingService
+from posting_app.services import PostingServiceFactory
 from telegram_app.services import TelegramService
 
 console = Console()
@@ -27,6 +26,7 @@ class Config(BaseModel):
     argenprop_full_url: Optional[str] = None
     mercadolibre_full_url: Optional[str] = None
     la_voz_full_url: Optional[str] = None
+    properati_full_url: Optional[str] = None
 
 
 def main(config_path: str):
@@ -50,44 +50,39 @@ def main(config_path: str):
     while(True):
         # SCRAP POSTINGS
         if config.zonaprop_full_url:
-            zonaprop_scraper_service = ScraperServiceFactory.build_for_zonaprop(
+            zonaprop_posting_service = PostingServiceFactory.build_for_zonaprop(
                 pages=config.pages,
                 full_url=config.zonaprop_full_url,
-            )
-            zonaprop_posting_service = PostingService(
-                scraper_service=zonaprop_scraper_service
             )
             zonaprop_posting_service.scrap_and_create_postings()
 
         if config.argenprop_full_url:
-            argenprop_scraper_service = ScraperServiceFactory.build_for_argenprop(
+            argenprop_posting_service = PostingServiceFactory.build_for_argenprop(
                 pages=config.pages,
                 full_url=config.argenprop_full_url,
-            )
-            argenprop_posting_service = PostingService(
-                scraper_service=argenprop_scraper_service
             )
             argenprop_posting_service.scrap_and_create_postings()
 
         if config.mercadolibre_full_url:
-            mercadolibre_scraper_service = ScraperServiceFactory.build_for_mercadolibre(
+            mercadolibre_posting_service = PostingServiceFactory.build_for_mercadolibre(
                 pages=config.pages,
                 full_url=config.mercadolibre_full_url,
-            )
-            mercadolibre_posting_service = PostingService(
-                scraper_service=mercadolibre_scraper_service
             )
             mercadolibre_posting_service.scrap_and_create_postings()
 
         if config.la_voz_full_url:
-            la_voz_scraper_service = ScraperServiceFactory.build_for_la_voz(
+            la_voz_posting_service = PostingServiceFactory.build_for_la_voz(
                 pages=config.pages,
                 full_url=config.la_voz_full_url,
             )
-            la_voz_posting_service = PostingService(
-                scraper_service=la_voz_scraper_service
-            )
             la_voz_posting_service.scrap_and_create_postings()
+
+        if config.properati_full_url:
+            properati_posting_service = PostingServiceFactory.build_for_properati(
+                pages=config.pages,
+                full_url=config.properati_full_url,
+            )
+            properati_posting_service.scrap_and_create_postings()
 
         console.log('Postings scrapped', style='italic bold green')
 

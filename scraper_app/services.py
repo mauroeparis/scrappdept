@@ -3,18 +3,20 @@ from typing import Optional, List
 from rich.console import Console
 
 from .gateways import (
-    BaseGateway,
-    ZonapropGateway,
     ArgenpropGateway,
-    MercadolibreGateway,
+    BaseGateway,
     LaVozGateway,
+    MercadolibreGateway,
+    ProperatiGateway,
+    ZonapropGateway,
 )
 from .parsers import (
-    BaseParser,
-    ZonapropParser,
     ArgenpropParser,
-    MercadolibreParser,
+    BaseParser,
     LaVozParser,
+    MercadolibreParser,
+    ProperatiParser,
+    ZonapropParser,
 )
 from posting_app.database import Posting
 
@@ -104,4 +106,17 @@ class ScraperServiceFactory:
             url=full_url,
             gateway=LaVozGateway(),
             parser=LaVozParser(),
+        )
+
+    @classmethod
+    def build_for_properati(
+        cls,
+        pages: int,
+        full_url: str
+    ) -> ScraperService:
+        return ScraperService(
+            pages=pages,
+            url=full_url,
+            gateway=ProperatiGateway(),
+            parser=ProperatiParser(),
         )

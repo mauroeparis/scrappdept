@@ -1,7 +1,7 @@
 from rich.console import Console
 
 from .database import PostingRepository
-from scraper_app.services import ScraperService
+from scraper_app.services import ScraperService, ScraperServiceFactory
 
 console = Console()
 
@@ -20,3 +20,63 @@ class PostingService:
         console.log('Postings saved successfully!', style='green')
 
 
+class PostingServiceFactory:
+    @classmethod
+    def build_for_zonaprop(
+        cls,
+        pages: int,
+        full_url: str
+    ) -> PostingService:
+        scrapper_service = ScraperServiceFactory.build_for_zonaprop(
+            pages=pages,
+            full_url=full_url,
+        )
+        return PostingService(scraper_service=scrapper_service)
+
+    @classmethod
+    def build_for_argenprop(
+        cls,
+        pages: int,
+        full_url: str
+    ) -> PostingService:
+        scrapper_service = ScraperServiceFactory.build_for_argenprop(
+            pages=pages,
+            full_url=full_url,
+        )
+        return PostingService(scraper_service=scrapper_service)
+
+    @classmethod
+    def build_for_mercadolibre(
+        cls,
+        pages: int,
+        full_url: str
+    ) -> PostingService:
+        scrapper_service = ScraperServiceFactory.build_for_mercadolibre(
+            pages=pages,
+            full_url=full_url,
+        )
+        return PostingService(scraper_service=scrapper_service)
+
+    @classmethod
+    def build_for_la_voz(
+        cls,
+        pages: int,
+        full_url: str
+    ) -> PostingService:
+        scrapper_service = ScraperServiceFactory.build_for_la_voz(
+            pages=pages,
+            full_url=full_url,
+        )
+        return PostingService(scraper_service=scrapper_service)
+
+    @classmethod
+    def build_for_properati(
+        cls,
+        pages: int,
+        full_url: str
+    ) -> PostingService:
+        scrapper_service = ScraperServiceFactory.build_for_properati(
+            pages=pages,
+            full_url=full_url,
+        )
+        return PostingService(scraper_service=scrapper_service)

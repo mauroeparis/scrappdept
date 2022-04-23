@@ -14,7 +14,6 @@ class LaVozParser(BaseParser):
     base_info_tag = "div"
     link_regex = "a"
     price_regex = "span.price"
-    # description_regex = "p.card__info "
     location_regex = "div.h5"
     title_regex = "h2.h4"
 
@@ -38,8 +37,7 @@ class LaVozParser(BaseParser):
             except Exception as e:
                 continue
             else:
-                href = "{}{}".format(
-                    self.url_base, link_container.get("href"))
+                href = link_container.get("href")
                 title = self.sanitize_text(title_container.text)
                 sha = self.get_id(href)
                 price = self.sanitize_text(price_container.text)
