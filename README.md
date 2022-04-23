@@ -2,53 +2,103 @@
 
 > Me quiero mudar
 
-Este proyecto busca inmuebles con los filtros que quieras y manda un mensaje de telegram a un grupo con los inmuebles nuevos que encuentra.
+Este proyecto busca inmuebles con los filtros que quieras y manda un bonito mensaje de telegram a un grupo con los inmuebles nuevos que encuentra.
 
-Hasta el día 18/02/2012 solo están implementados los conectores de Zonaprop, Argenprop y Mercado Libre.
+## Instalación
 
-> El de mercado libre anda medio mal pero anda y hay un intento de implementar el de Olx pero encontramos una casa antes de terminarlo bien.
+### Requerimientos Previos
 
-Sentite libre de abrir PRs, forkear, abrir issues, seguirme en twitter que tengo twitter y seguirme en instagram que tengo instagram.
+1. Saber lo que es una terminal/consola y poder manejarte entre carpetas en una.
 
-## Instrucciones
+2. Vas a necesitar tener instalado Python. Si no lo tenés instalado, [acá te dejo un link](https://tutorial.djangogirls.org/es/python_installation/)
 
-### Configurar donde buscar
+3. Clonar este repo. Si no sabés clonar un repositorio [acá te dejo un link](https://www.taloselectronics.com/blogs/tutoriales/como-descargar-un-proyecto-de-github)
 
-1. Primero buscá en Zonaprop, Mercado Libre y/o Argenprop con los filtros que queres. (Zona, si es casa o depto, dormitorios, lo que quieras)
+### Setup
 
-2. Copiá el link que te sale cuando haces esa busqueda y pegalo dentro del archivo correspondiente dentro de la carpeta `connectors` en la variable `full_url` o `_full_url` según corresponda. Fijate que en el que está al final puede decir `-pagina-{}.html` borrá la parte de `.html` de tu link poné eso al final para poder buscar dentro de varias páginas.
+1. Abrir una terminal/consola<s>/tostadora</s> donde puedas usar python.
 
-3. Configurá la cantidad de páginas que queres que vea el scrapper con la variable `number_of_pages` dentro del mismo archivo.
+2. Ir a la carpeta del repositorio en tu computadora.
 
-> En mercadolibre.py esta variable no está.
+2. Crear un entorno virtual y activarlo corriendo lo siguiente:
 
-### Configurar Bot de Telegram
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+3. Instalar lo que necesita el comando para funcionar:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Listop, ahora podes empezar a configurar el script!
+
+## Configuración
+
+### Bot de Telegram
 
 1. Para poder utilizar este proyecto tenés vas a tener que crearte un bot, agregarlo a un grupo. Nosotros vamos a utilizar el token del bot y el "Chat ID" del grupo. Si no sabes cómo conseguir esas cosas [acá te dejo un link](https://dev.to/rizkyrajitha/get-notifications-with-telegram-bot-537l). 
 
-2. Una vez que tenés esas cosas, vas a clonar este repo e ir a la carpeta en donde lo pongas. Si no sabés clonar un repositorio [acá te dejo un link](https://www.taloselectronics.com/blogs/tutoriales/como-descargar-un-proyecto-de-github)
-
-3. Ahora vas a ir al archivo `connectors/base.py` y poner el token de tu bot dentro de la variable `bot_token` y el id del chat en la variable `chat_room`. Te debería quedar algo asi: 
-```python
-# Telegram bot token here
-bot_token = "23523523525:DSOIGUHEODGHGdasdsadSADSD4"
-# Chat roop ID goes here
-chat_room = "-32523532532"
-```
+2. No pierdas estas cosas, las vamos a necesitar en el futuro.
 
 > Puede que tu token y el chat id se vean distintos a los que puse ahi.
 
-### Correr programa
+### Links de Búsqueda
 
-1. Para poder correr esto vas a necesitar Python. Si no lo tenés instalado, nuevamente [acá te dejo un link](https://tutorial.djangogirls.org/es/python_installation/)
+Es necesario decirle al script los filtros que vos pones cuando buscas inmuebles y lo vamos a hacer pasandole el link generado por las páginas cuando agregas los filtros a la búsqueda.
 
-22. Bien, finalmente vas a correr lo siguiente en una terminal dentro de la carpeta del repo:
+1. Buscá en Zonaprop y/o Argenprop con los filtros que queres y andá a la segunda página de la búsqueda. (Zona, si es casa o depto, dormitorios, lo que quieras)
 
-```bash
-python main.py
+2. Copiá el link que te sale cuando haces esa busqueda, pegalo en algún lado y fijate que al final puede decir algo cómo `-pagina-2.html` borrá el número de página y pone `{}`. El link se debería terminar viendo así `-pagina-{}.html`.
+
+3. No pierdas estas cosas, las vamos a necesitar en el futuro.
+
+### Archivo de Configuración
+
+1. Creá un archivo dentro de la carpeta del repositorio que se llame `config.yaml` que se vea así:
+
+```yaml
+persist: true
+bot_token: "1346325228:AAER2AItAePnwDod8E4wWgZ5RAguDlq67dA"
+chat_room: "-1001351937287"
+pages: 5
+zonaprop_full_url: "https://www.zonaprop.com.ar/loquesea-pagina-{}.html"
+argenprop_full_url: "https://www.argenprop.com/loquesea-pagina-{}"
 ```
 
-Ahora te deberían empezar a llegar mensajes desde tu bot.
+Donde:
+
+- `persist`: Hace que el script se ejecute sin parar. Si es configurado en `false` va a hacer la busqueda una sola vez, en `true` busca nuevos departamentos permanentemente.
+- `sleep_time`: Tiempo que espera antes de hacer la busqueda nuevamente en segundos.
+- `bot_token`: Token del bot de telegram.
+- `chat_room`: id del chat en donde el bot envía los mensajes.
+- `pages`: Cantidad de páginas en las que querés que vea en tu búsqueda en zonaprop/argenprop.
+- `zonaprop_full_url`: URL de Zonaprop en la que buscar.
+- `argenprop_full_url`: URL de Argenprop en la que buscar.
+
+2. Profit.
+
+## Uso
+
+1. Abrir una terminal
+
+2. Ir a la carpeta del repositorio
+
+3. Activar el entorno virtual:
+
+```bash
+source venv/bin/activate
+```
+
+4. Correr el script pasándole el archivo de configuración
+
+```bash
+python main.py ./config.yaml
+```
+
+Listo! Ahora te deberían empezar a llegar mensajes desde tu bot.
 
 ## Agradecimientos
 

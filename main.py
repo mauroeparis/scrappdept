@@ -1,4 +1,4 @@
-import json
+import yaml
 from time import sleep
 from typing import Optional
 
@@ -30,7 +30,7 @@ class Config(BaseModel):
 def main(config_path: str):
     # LOAD CONFIG
     with open(config_path) as config_json:
-        config_dict = json.load(config_json)
+        config_dict = yaml.safe_load(config_json)
 
     try:
         config = Config(**config_dict)
@@ -47,32 +47,36 @@ def main(config_path: str):
 
     while(True):
         # SCRAP POSTINGS
-        zonaprop_scraper_service = ScraperServiceFactory.build_for_zonaprop(
-            pages=config.pages,
-            full_url=config.zonaprop_full_url,
-        )
-        zonaprop_posting_service = PostingService(
-            scraper_service=zonaprop_scraper_service
-        )
-        zonaprop_posting_service.scrap_and_create_postings()
+        if config.zonaprop_full_url:
+            zonaprop_scraper_service = ScraperServiceFactory.build_for_zonaprop(
+                pages=config.pages,
+                full_url=config.zonaprop_full_url,
+            )
+            zonaprop_posting_service = PostingService(
+                scraper_service=zonaprop_scraper_service
+            )
+            zonaprop_posting_service.scrap_and_create_postings()
 
-        argenprop_scraper_service = ScraperServiceFactory.build_for_argenprop(
-            pages=config.pages,
-            full_url=config.argenprop_full_url,
-        )
-        argenprop_posting_service = PostingService(
-            scraper_service=argenprop_scraper_service
-        )
-        argenprop_posting_service.scrap_and_create_postings()
+        if config.argenprop_full_url:
+            argenprop_scraper_service = ScraperServiceFactory.build_for_argenprop(
+                pages=config.pages,
+                full_url=config.argenprop_full_url,
+            )
+            argenprop_posting_service = PostingService(
+                scraper_service=argenprop_scraper_service
+            )
+            argenprop_posting_service.scrap_and_create_postings()
 
-        mercadolibre_scraper_service = ScraperServiceFactory.build_for_mercadolibre(
-            pages=config.pages,
-            full_url=config.mercadolibre_full_url,
-        )
-        mercadolibre_posting_service = PostingService(
-            scraper_service=mercadolibre_scraper_service
-        )
-        mercadolibre_posting_service.scrap_and_create_postings()
+        if config.mercadolibre_full_url:
+            mercadolibre_scraper_service = ScraperServiceFactory.build_for_mercadolibre(
+                pages=config.pages,
+                full_url=config.mercadolibre_full_url,
+            )
+            mercadolibre_posting_service = PostingService(
+                scraper_service=mercadolibre_scraper_service
+            )
+            mercadolibre_posting_service.scrap_and_create_postings()
+
         console.log('Postings scrapped', style='italic bold green')
 
         # SEND POSTINGS

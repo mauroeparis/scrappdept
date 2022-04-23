@@ -4,3 +4,4 @@ cloudscraper==1.2.60
 pydantic==1.9.0
 beautifulsoup4==4.11.1
 sqlmodel==0.0.6
+PyYAML==6.0
