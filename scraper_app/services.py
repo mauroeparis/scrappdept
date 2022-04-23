@@ -34,9 +34,10 @@ class ScraperService:
 
     def get_postings_from_scraper(self) -> List[Posting]:
         postings = set()
+        pages = self._pages if self._gateway.paginated else 1
 
-        for page in range(1, self._pages + 1):
-            console.log(f'Page {page} of {self._pages}')
+        for page in range(1, pages + 1):
+            console.log(f'Page {page} of {pages}')
             html = self._gateway.make_request(
                 url=self._url.format(page)
             )

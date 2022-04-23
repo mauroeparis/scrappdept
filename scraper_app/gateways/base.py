@@ -8,6 +8,7 @@ console = Console()
 
 
 class BaseGateway(ABC):
+    paginated = True
 
     def make_request(self, url: str) -> str:
         '''
