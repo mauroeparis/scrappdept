@@ -1,10 +1,10 @@
-# Scrapper de Inmuebles
+# Scrapper de Inmuebles :house:
 
 > Me quiero mudar
 
 Este proyecto busca inmuebles en algunas páginas con los filtros que quieras y manda un bonito mensaje de telegram a un grupo con los inmuebles nuevos que encuentra en esas páginas.
 
-### Páginas Habilitadas
+### Páginas Habilitadas :white_check_mark:
 
 - [Zonaprop](https://www.zonaprop.com.ar/)
 - [Argenprop](https://www.argenprop.com/)
@@ -12,9 +12,9 @@ Este proyecto busca inmuebles en algunas páginas con los filtros que quieras y 
 - [Clasificados La Voz](https://clasificados.lavoz.com.ar/inmuebles)
 - [Properati](https://www.properati.com.ar/)
 
-## Instalación
+## Instalación :wrench:
 
-### Requerimientos Previos
+### Requerimientos Previos :nut_and_bolt:
 
 1. Saber lo que es una terminal/consola y poder manejarte entre carpetas en una.
 
@@ -22,7 +22,7 @@ Este proyecto busca inmuebles en algunas páginas con los filtros que quieras y 
 
 3. Clonar este repo. Si no sabés clonar un repositorio, [acá te dejo un link](https://www.taloselectronics.com/blogs/tutoriales/como-descargar-un-proyecto-de-github)
 
-### Setup
+### Setup :hammer:
 
 1. Abrir una terminal/consola<s>/tostadora</s> donde puedas usar python.
 
@@ -43,15 +43,15 @@ pip install -r requirements.txt
 
 4. Listop, ahora podes empezar a configurar el script!
 
-## Configuración
+## Configuración :pencil:
 
-### Bot de Telegram
+### Bot de Telegram :envelope:
 
 1. Para poder utilizar este proyecto tenés vas a tener que crearte un bot, agregarlo a un grupo. Nosotros vamos a utilizar el token del bot y el "Chat ID" del grupo. Si no sabes cómo conseguir esas cosas [acá te dejo un link](https://dev.to/rizkyrajitha/get-notifications-with-telegram-bot-537l). 
 
 2. No pierdas estas cosas, las vamos a necesitar en el futuro.
 
-### Links de Búsqueda
+### Links de Búsqueda :mag:
 
 Es necesario decirle al script los filtros que vos pones cuando buscas inmuebles y lo vamos a hacer pasandole el link generado por las páginas cuando agregas los filtros a la búsqueda.
 
@@ -61,7 +61,7 @@ Es necesario decirle al script los filtros que vos pones cuando buscas inmuebles
 
 3. No pierdas estas cosas, las vamos a necesitar en el futuro.
 
-### Archivo de Configuración
+### Archivo de Configuración :page_facing_up:
 
 1. Creá un archivo dentro de la carpeta del repositorio que se llame `config.yaml` que se vea más o menos así:
 
@@ -89,7 +89,7 @@ Donde:
 
 2. Profit.
 
-## Uso
+## Uso :rainbow:
 
 1. Abrir una terminal
 
@@ -107,8 +107,8 @@ source venv/bin/activate
 python main.py ./config.yaml
 ```
 
-Listo! Ahora te deberían empezar a llegar mensajes desde tu bot.
+Listo! :tada: Ahora te deberían empezar a llegar mensajes desde tu bot.
 
-## Agradecimientos
+## Agradecimientos :pray:
 
 Muchas gracias a [fernandezpablo85](https://gist.github.com/fernandezpablo85) porque [este articulo](https://dev.to/fernandezpablo/scrappeando-propiedades-con-python-4cp8) es el que dió origen a este proyecto y ayudó a que pueda encontrar una casa.
