@@ -66,6 +66,7 @@ pages: 5 # Cantidad de páginas que ver
 zonaprop_full_url: "https://www.zonaprop.com.ar/loquesea-pagina-{}.html" # busqueda zonaprop
 argenprop_full_url: "https://www.argenprop.com/loquesea-pagina-{}" # busqueda argenprop
 la_voz_full_url: "https://clasificados.lavoz.com.ar/inmuebles/loquesea&page={}" # busqueda la voz
+properati_full_url: "https://www.properati.com.ar/s/departamento/alquiler/loquesea&page={}" # busqueda properati
 ```
 
 Donde:
