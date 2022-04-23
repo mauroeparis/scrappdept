@@ -18,6 +18,7 @@ console = Console()
 
 class Config(BaseModel):
     pages: int
+    sleep_time: Optional[int] = 5
     bot_token: str
     chat_room: str
     persist: Optional[bool] = False
@@ -93,18 +94,21 @@ def main(config_path: str):
             sent = telegram_service.send_telegram_message(msg_text)
             if sent:
                 posting_repository.set_posting_as_sent(posting.sha)
-                console.log(f'{posting.title} has been sent!', style='green')
             else:
                 console.log(
-                    f'[bold u]ERROR[/bold u]: Unable to send {posting.title}',
-                    style='red'
+                    (
+                        '[bold u]WARNING[/bold u]: '
+                        f'Unable to send {posting.title}. '
+                        'I\'m going to try later though, [u]don\'t panic[/u]'
+                    ),
+                    style='yellow'
                 )
         console.log('Postings sent', style='italic bold green')
 
         if not config.persist:
             break
         
-        sleep(5)
+        sleep(config.sleep_time)
 
 
 if __name__ == '__main__':
