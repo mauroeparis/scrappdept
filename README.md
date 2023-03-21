@@ -1,4 +1,4 @@
-# Scrapper de Inmuebles :house:
+# Scraper de Inmuebles :house:
 
 > Me quiero mudar
 
