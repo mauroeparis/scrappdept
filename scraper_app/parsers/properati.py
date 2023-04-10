@@ -53,7 +53,6 @@ class ProperatiParser(BaseParser):
 
             except Exception as e:
                 
-                import ipdb;ipdb.set_trace()
                 continue
 
             href = '{}{}'.format(
