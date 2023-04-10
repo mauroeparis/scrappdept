@@ -8,7 +8,7 @@ from pydantic.error_wrappers import ValidationError
 from rich.console import Console
 from rich.progress import track
 
-from posting_app.database import create_db_and_tables, PostingRepository
+from posting_app.database import create_database, create_db_and_tables, PostingRepository
 from posting_app.services import PostingServiceFactory
 from telegram_app.services import TelegramService
 
@@ -27,6 +27,7 @@ class Config(BaseModel):
     mercadolibre_full_url: Optional[str] = None
     la_voz_full_url: Optional[str] = None
     properati_full_url: Optional[str] = None
+    database_filename: Optional[str] = 'scrapdep'
 
 
 def main(config_path: str):
@@ -43,6 +44,9 @@ def main(config_path: str):
         return
     console.log('Configuration read correctly', style='italic bold green')
     
+    # CREATE DATABASE
+    create_database(config.database_filename)  
+
     # LOAD DATABASE
     create_db_and_tables()
     console.log('Database loaded', style='italic bold green')

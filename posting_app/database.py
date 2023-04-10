@@ -36,8 +36,11 @@ class Posting(SQLModel, table=True):
             return self.__key() == other.__key()
         return NotImplemented
 
+engine = ''
 
-engine = create_engine('sqlite:///scrapdep.db')
+def create_database(engine_name):
+    global engine 
+    engine = create_engine(f'sqlite:///{engine_name}.db')
 
 
 def create_db_and_tables():
