@@ -43,7 +43,7 @@ class ProperatiParser(BaseParser):
                 elif base_info_soap.select(self.location_regex_option2) is not None:
                     location_container =base_info_soap.select(self.location_regex_option2)[0]
 
-                '''Description can be found either in description_regex or properties_regex'''    
+                # Description can be found either in description_regex or properties_regex
                 if len(base_info_soap.select(self.description_regex))>0:
                     description_container = base_info_soap.select(self.description_regex)[0]    
                 elif base_info_soap.select(self.properties_regex) is not None:
