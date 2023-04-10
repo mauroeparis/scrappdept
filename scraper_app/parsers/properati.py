@@ -48,7 +48,6 @@ class ProperatiParser(BaseParser):
                     description_container = base_info_soap.select(self.description_regex)[0]    
                 elif base_info_soap.select(self.properties_regex) is not None:
                     description_container = base_info_soap.select(self.properties_regex)[0]    
-               
 
             except Exception as e:
                 
