@@ -38,7 +38,7 @@ class ProperatiParser(BaseParser):
                 link_container = base_info_soap
                 price_container = base_info_soap.select(self.price_regex)[0]
 
-                '''Location can be found either in location_regex or location_regex_option2'''    
+                # Location can be found either in location_regex or location_regex_option2
                 if len(base_info_soap.select(self.location_regex))>0:
                     location_container =base_info_soap.select(self.location_regex)[0]
                 elif base_info_soap.select(self.location_regex_option2) is not None:
