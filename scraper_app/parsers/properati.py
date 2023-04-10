@@ -28,7 +28,7 @@ class ProperatiParser(BaseParser):
         '''Extracting data and returning list of postings'''
         postings = set()
         
-        '''Using onclick attribute instead of class'''
+        # Using onclick attribute instead of class
         base_info_soaps = self.soup.find_all(
             self.base_info_tag, {"onclick": True})
 
