@@ -21,7 +21,6 @@ class ProperatiParser(BaseParser):
     location_regex = 'div.listing-card__location'
     location_regex_option2 = 'div.location'
 
-
     _base_url = 'https://www.properati.com.ar'
 
     def extract_data(self) -> Set[Posting]:
