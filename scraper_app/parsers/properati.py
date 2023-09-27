@@ -13,7 +13,7 @@ class ProperatiParser(BaseParser):
     link_regex = 'a'
     price_regex = 'div.price'
 
-    '''Description regexs'''
+    # Description regexs
     description_regex = 'div.listing-card__information-bottom'
     properties_regex = 'div.properties'
 
