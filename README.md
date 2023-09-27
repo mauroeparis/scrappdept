@@ -71,6 +71,7 @@ sleep_time: 3 # Hace que el script se ejecute cada 3 segundos
 bot_token: "1234567899:asdasdsadasdasdsaddgZ5RAguDlq67dA" # Token de bot
 chat_room: "-1801651256762" # id de chat
 pages: 5 # Cantidad de páginas que ver por link
+database_filename: 'nombre_de_archivo' # Opcional: donde se guardará la base de datos
 zonaprop_full_url: "https://www.zonaprop.com.ar/loquesea-pagina-{}.html" # busqueda zonaprop
 mercadolibre_full_url: "https://inmuebles.mercadolibre.com.ar/departamentos/alquiler/loquesea" # busqueda mercadolibre
 argenprop_full_url: "https://www.argenprop.com/loquesea-pagina-{}" # busqueda argenprop
@@ -85,6 +86,7 @@ Donde:
 - `bot_token`: Token del bot de telegram.
 - `chat_room`: id del chat en donde el bot envía los mensajes.
 - `pages` _(opcional, default: `3`)_: Cantidad de páginas en las que querés que vea en tu búsqueda en zonaprop/argenprop.
+- `database_filename` _(opcional, default: `scrapdep`)_: Permite definir el nombre de la base de datos para cada archivo de configuración.
 - `pagina_full_url` _(opcional)_: URL del link en el que buscar.
 
 2. Profit.
